@@ -6,12 +6,12 @@ const Options = (props) => {
   const options = [
     {
       text: "Not at all",
-      handler:() => props.actionProvider.question02(1),
+      handler:() => props.actionProvider.question02(0),
       id: 1,
     },
-    { text: "Several days", handler: () => props.actionProvider.question02(2), id: 2 },
-    { text: "More than half the days", handler: () => props.actionProvider.question02(3), id: 3 },
-    { text: "Nearly every day", handler: () => props.actionProvider.question02(4), id: 4 },
+    { text: "Several days", handler: () => props.actionProvider.question02(1), id: 2 },
+    { text: "More than half the days", handler: () => props.actionProvider.question02(2), id: 3 },
+    { text: "Nearly every day", handler: () => props.actionProvider.question02(3), id: 4 },
   ];
 
   const buttonsMarkup = options.map((option) => (

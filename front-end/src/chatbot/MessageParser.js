@@ -1,6 +1,7 @@
 class MessageParser {
   constructor(actionProvider) {
     this.actionProvider = actionProvider;
+    
   }
 
   parse(message) {
@@ -14,47 +15,57 @@ class MessageParser {
     if (lowercase.includes("hello")) {
       this.actionProvider.question01(lowercase);
     }
-    if (lowercase.includes("yes") && currentQuestion == 0) {
+    else if (lowercase.includes("hii") && currentQuestion == 0) {
       currentQuestion = 1;
+      const score = this.getScore(this.currentQuestion - 1);
+      console.log(this.score);
       this.actionProvider.question02(lowercase);
     }
-    if (lowercase.includes("test") && currentQuestion == 1) {
+    else if (lowercase.includes("test") && currentQuestion == 1) {
       currentQuestion = 2;
+      const score = this.getScore(this.currentQuestion - 1);
       this.actionProvider.question03();
     }
-    if (lowercase.includes("no") && currentQuestion == 2) {
+    else if (lowercase.includes("no") && currentQuestion == 2) {
       currentQuestion = 3;
+      const score = this.getScore(this.currentQuestion - 1);
       this.actionProvider.question04();
     }
-    if (lowercase.includes("maybe") && currentQuestion == 3) {
+    else if (lowercase.includes("maybe") && currentQuestion == 3) {
       currentQuestion = 4;
+      const score = this.getScore(this.currentQuestion - 1);
       this.actionProvider.question05();
     }
 
-    if (lowercase.includes("yes") && currentQuestion == 5) {
+    else if (lowercase.includes("yes") && currentQuestion == 5) {
       currentQuestion = 6;
+      const score = this.getScore(this.currentQuestion - 1);
       this.actionProvider.question06();
     }
 
-    if (lowercase.includes("ques06") && currentQuestion == 6) {
+    else if (lowercase.includes("ques06") && currentQuestion == 6) {
       currentQuestion = 7;
+      const score = this.getScore(this.currentQuestion - 1);
       this.actionProvider.question07();
     }
 
-    if (lowercase.includes("ques07") && currentQuestion == 7) {
+    else if (lowercase.includes("ques07") && currentQuestion == 7) {
       currentQuestion = 8;
+      const score = this.getScore(this.currentQuestion - 1);
       this.actionProvider.question08();
     }
 
-    if (lowercase.includes("ques08") && currentQuestion == 8) {
+    else if (lowercase.includes("ques08") && currentQuestion == 8) {
       currentQuestion = 9;
+      const score = this.getScore(this.currentQuestion - 1);
       this.actionProvider.question09();
     }
 
-    if (lowercase.includes("javascript") || lowercase.includes("js")) {
+
+    else if (lowercase.includes("javascript") || lowercase.includes("js")) {
       this.actionProvider.handleJavascriptQuiz();
     }
-    if (lowercase.includes("javascript") || lowercase.includes("js")) {
+    else if (lowercase.includes("javascript") || lowercase.includes("js")) {
       this.actionProvider.handleJavascriptQuiz();
     }
     //   else

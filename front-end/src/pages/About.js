@@ -1,10 +1,25 @@
-export default function About() {
+import React from "react";
+import Chatbot from "react-chatbot-kit";
+import config from "../modelBot/config";
+import ActionProvider from "../modelBot/ActionProvider";
+import MessageParser from "../modelBot/MessageParser";
+import "../App.css";
+
+
+export default function About(){
     return (
-      <div className="about">
-        <h2>About Us</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui provident consequuntur vel omnis quisquam rem harum, maxime expedita, ullam ut dolore! Distinctio eos minima voluptatum totam id hic! Sapiente debitis quia illum officia obcaecati provident nulla odio molestiae suscipit quasi.</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui provident consequuntur vel omnis quisquam rem harum, maxime expedita, ullam ut dolore! Distinctio eos minima voluptatum totam id hic! Sapiente debitis quia illum officia obcaecati provident nulla odio molestiae suscipit quasi.</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui provident consequuntur vel omnis quisquam rem harum, maxime expedita, ullam ut dolore! Distinctio eos minima voluptatum totam id hic! Sapiente debitis quia illum officia obcaecati provident nulla odio molestiae suscipit quasi.</p>
+      <div className="App">
+  
+        <div style={{ maxWidth: "300px" }}>
+          <Chatbot
+            config={config}
+            actionProvider={ActionProvider}
+            messageParser={MessageParser}
+          />
+        </div>
+
       </div>
-    )
+    );
   }
+
+  
