@@ -1,32 +1,21 @@
 from flask import Flask
 import logging
 import pymongo
-import ssl
-import certifi
+from flask_cors import CORS
 from pymongo import MongoClient,uri_parser
-from flask_cors import CORS #comment this on deployment
+# from flask_cors import CORS #comment this on deployment
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 
 
-
 app = Flask(__name__)
+CORS(app)
 
+CORS(app, resources={r"/api/*": {"origins": ["http://example.com", "http://localhost:3000"]}})
 
-# app.config['MONGO_URI'] = 'mongodb+srv://testDB:DrJHRPQGjl8ZhOkZ@cluster0.7pdellm.mongodb.net/?retryWrites=true&w=majority' 
-# mongo = PyMongo(app,tlsCAFile=certifi.where())
-# collection_name = mongo.db.myCollection
+client = pymongo.MongoClient("mongodb+srv://admin:admin@cluster0.coi5ykd.mongodb.net/test")
 
-# cluster = MongoClient("mongodb+srv://testDB:DrJHRPQGjl8ZhOkZ@cluster0.7pdellm.mongodb.net/myDatabase?retryWrites=true&w=majority",ssl=True,
-#     ssl_cert_reqs="CERT_REQUIRED")
-client = pymongo.MongoClient("mongodb+srv://testDB:DrJHRPQGjl8ZhOkZ@cluster0.7pdellm.mongodb.net/myDatabase?retryWrites=true&w=majority", ssl_cert_reqs=ssl.CERT_NONE)
-
-# app.config["MONGO_URI"]  = pymongo.MongoClient("mongodb+srv://testDB:DrJHRPQGjl8ZhOkZ@cluster0.7pdellm.mongodb.net/mydatabase?retryWrites=true&w=majority", ssl_cert_reqs=ssl.CERT_NONE)
-app.config["MONGO_URI"] = "mongodb+srv://testDB:DrJHRPQGjl8ZhOkZ@cluster0.7pdellm.mongodb.net/myDatabase?retryWrites=true&w=majority"
-# app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
-# mongo = PyMongo(app)
-
-db = client["myCollection"]
+db = client["myDatabase"]
 collection = db["myCollection"]
 
 logging.basicConfig(level=logging.DEBUG)
@@ -41,6 +30,7 @@ def hello_world():
     print(json_data)
     app.logger.info('Processing default request')
     return jsonify({'message': 'Data added successfully'})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

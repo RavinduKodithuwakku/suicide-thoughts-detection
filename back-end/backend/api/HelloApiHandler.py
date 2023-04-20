@@ -34,7 +34,6 @@ class HelloApiHandler(Resource):
     # currently just returning directly for demo purposes
     ret_status = un
   
-    
 
     if ret_status:
       message = "Your Message Requested: {}".format(ret_status)
