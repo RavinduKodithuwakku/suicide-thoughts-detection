@@ -11,11 +11,12 @@ class MessageParser {
 
     var currentQuestion = 0;
 
-    if (lowercase.includes("hello")) {
-      this.actionProvider.greet(lowercase);
+    if (lowercase.includes("set")) {
+      // this.actionProvider.clearDB();
+      this.actionProvider.question01(lowercase);
     } else if (lowercase.includes("hii") && currentQuestion == 0) {
       currentQuestion = 1;
-      this.actionProvider.question02(lowercase);
+      this.actionProvider.greet(lowercase);
     } else if (lowercase.includes("test") && currentQuestion == 1) {
       currentQuestion = 2;
       this.actionProvider.question03();

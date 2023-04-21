@@ -62,12 +62,6 @@ class MessageParser {
     }
 
 
-    else if (lowercase.includes("javascript") || lowercase.includes("js")) {
-      this.actionProvider.handleJavascriptQuiz();
-    }
-    else if (lowercase.includes("javascript") || lowercase.includes("js")) {
-      this.actionProvider.handleJavascriptQuiz();
-    }
     //   else
     //   this.actionProvider.errormsg();
   }

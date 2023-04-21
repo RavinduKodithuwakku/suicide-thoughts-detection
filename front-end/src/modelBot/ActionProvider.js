@@ -8,27 +8,42 @@ class ActionProvider {
     this.setState = setStateFunc;
   }
 
-  sendData = (msg) => {
-    const abc = { message: msg };
+  clearDB = (msg) => {
+    const deleteMsg = { message: msg };
+    // Simple DELETE request with axios
+    axios.delete('http://localhost:5000/flask/hello',deleteMsg)
+        // .then(() => this.setState({ status: 'Delete successful' }));
+        .then((response) => {
+          console.log(response.data.message);
+          const message = this.createChatBotMessage(response.data.message);
+          // this.addMessageToState(message);
+        })
+  }
 
-    console.log(abc);
+  sendData = (msg) => {
+    const sendDataMsg = { message: msg };
+
+    console.log(sendDataMsg);
     axios
-      .post('http://localhost:5000/flask/hello', abc)
+      .post("http://localhost:5000/flask/hello", sendDataMsg)
       .then((response) => {
         console.log(response.data.message);
         const message = this.createChatBotMessage(response.data.message);
-        this.addMessageToState(message);
+        // this.addMessageToState(message);
       })
       .catch((error) => console.error(error));
   };
 
-  greet = (msg) => {
-    this.sendData(msg);
+
+  greet = (sendDataMsg) => {
+    this.sendData(sendDataMsg);
+    
   };
 
 
-  question01 = () => {
-    console.log("question01",this.currentScore);
+  question01 = (sendDataMsg,deleteMsg) => {
+    this.clearDB(deleteMsg);
+    this.sendData(sendDataMsg);
     const message = this.createChatBotMessage(
       ' 1. Do you experience a reduced or limited enjoyment of activities that you once found pleasurable or fulfilling?');
     this.addMessageToState(message);

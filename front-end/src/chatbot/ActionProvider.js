@@ -216,17 +216,6 @@ class ActionProvider {
     // console.log("question09ans",id,score);
   };
 
-  handleJavascriptQuiz = () => {
-    const message = this.createChatBotMessage(
-      "Fantastic. Here is your quiz. Good luck!",
-      {
-        widget: "javascriptQuiz",
-      }
-    );
-
-    this.addMessageToState(message);
-  };
-
   addMessageToState = (message) => {
     this.setState((prevState) => ({
       ...prevState,
